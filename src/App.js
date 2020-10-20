@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 
 const themes = {
@@ -15,10 +15,13 @@ const themes = {
 export const ThemeContext = React.createContext();
 
 function App() {
+  const [theme, setTheme] = useState(themes.dark)
   return (
     <div>
-      <ThemeContext.Provider value={ themes.dark }>
+      <ThemeContext.Provider value={ theme }>
         <Button />
+        <button onClick={ () => setTheme(themes.light)}>Modo Claro</button>
+        <button onClick={ () => setTheme(themes.dark)}>Modo Oscuro</button>
       </ThemeContext.Provider>
     </div>
   );
